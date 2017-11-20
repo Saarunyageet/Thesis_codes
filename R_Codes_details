@@ -1,0 +1,16 @@
+#convert gbk to get fasta corodinates
+>library(seqinr)
+>gbk2g2.euk(gbkfile = "Na1k_0916.gb", g2.coord ="Na1k_0916_coord")
+#Get intergenic positions
+#convert coordinates to csv in excel
+>A = read.csv("Na1k_0916_coord.csv", header=TRUE, sep=",", row.names=NULL)
+>B$diff <- c(NA, tail(A$Start, -1) - head(A$Stop, -1))  #Find the difference between 
+> names(B)
+>B$Startnew<- c(NA, tail(A$Stop, -1)) + 1 #Get intergenic start position
+#intergenic stop position by summing intergenic start with B$diff
+>B$Stopnew<- (B$Startnew + abs(B$diff))
+>write.csv(B, file = "All_3.csv")
+
+
+
+
